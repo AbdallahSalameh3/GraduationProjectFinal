@@ -51,20 +51,30 @@ class _donor_recipient_profile extends State<donor_recipient_profile> {
   void updateProfile() async {
     if (!_formKey.currentState!.validate()) return;
 
-    // Validate current password using bcrypt
-    bool isPasswordCorrect = BCrypt.checkpw(currentPasswordController.text.trim(), storedPassword ?? '');
-    if (!isPasswordCorrect) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("كلمة المرور الحالية غير صحيحة"), backgroundColor: Colors.red),
-      );
-      return;
-    }
-
-    // Hash new password if provided
     String newPassword = newPasswordController.text.trim();
-    String passwordToSave = newPassword.isEmpty
-        ? storedPassword!
-        : BCrypt.hashpw(newPassword, BCrypt.gensalt());
+    String currentPassword = currentPasswordController.text.trim();
+
+    String passwordToSave = storedPassword!;
+
+    // Only validate and update password if newPassword is not empty
+    if (newPassword.isNotEmpty) {
+      if (currentPassword.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("يرجى إدخال كلمة المرور الحالية لتغيير كلمة المرور"), backgroundColor: Colors.red),
+        );
+        return;
+      }
+
+      bool isPasswordCorrect = BCrypt.checkpw(currentPassword, storedPassword ?? '');
+      if (!isPasswordCorrect) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("كلمة المرور الحالية غير صحيحة"), backgroundColor: Colors.red),
+        );
+        return;
+      }
+
+      passwordToSave = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+    }
 
     await FirebaseFirestore.instance.collection('users').doc(widget.userEmail).update({
       'name': nameController.text.trim(),
@@ -77,6 +87,10 @@ class _donor_recipient_profile extends State<donor_recipient_profile> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text("تم تحديث الملف الشخصي بنجاح"), backgroundColor: Colors.green),
     );
+
+    // Clear password fields after update
+    currentPasswordController.clear();
+    newPasswordController.clear();
   }
 
   @override
@@ -92,7 +106,7 @@ class _donor_recipient_profile extends State<donor_recipient_profile> {
             child: Form(
               key: _formKey,
               child: ListView(
-                physics: BouncingScrollPhysics(), 
+                physics: BouncingScrollPhysics(),
                 children: [
                   SizedBox(height: 60),
                   Center(
@@ -111,14 +125,14 @@ class _donor_recipient_profile extends State<donor_recipient_profile> {
                   _buildTextField("رقم الهاتف", phoneController, Icons.phone),
                   _buildDropdownField("المدينة", cities),
                   _buildTextField("الموقع الفرعي", sublocationController, Icons.location_on),
-                  _buildTextField("كلمة المرور الحالية", currentPasswordController, Icons.lock, obscureText: true),
-                  _buildTextField("كلمة المرور الجديدة (اختياري)", newPasswordController, Icons.lock, obscureText: true),
+                  _buildTextField("كلمة المرور الحالية", currentPasswordController, Icons.lock, obscureText: true, enabled: true),
+                  _buildTextField("كلمة المرور الجديدة (اختياري)", newPasswordController, Icons.lock, obscureText: true, enabled: true),
                   SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: updateProfile,
                     child: Text("تحديث الملف الشخصي"),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF4CAF50), 
+                      backgroundColor: Color(0xFF4CAF50),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
@@ -162,99 +176,85 @@ class _donor_recipient_profile extends State<donor_recipient_profile> {
   }
 
   Widget _buildTextField(String label, TextEditingController controller, IconData icon, {bool obscureText = false, bool enabled = true}) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.end,
-    children: [
-      Text(label, style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF2E7D32), fontSize:18)), // Deep green color for text
-      SizedBox(height: 8),
-      TextFormField(
-        controller: controller,
-        obscureText: obscureText,
-        enabled: enabled,
-        keyboardType: label == "رقم الهاتف" ? TextInputType.phone : TextInputType.text,
-        textAlign: TextAlign.right,
-        decoration: InputDecoration(
-          prefixIcon: Icon(icon, color: Colors.grey),
-          filled: true,
-          fillColor: Colors.white,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12), // Circular border with radius 12
-            borderSide: BorderSide.none, // Removes the border line
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Text(label, style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF2E7D32), fontSize: 18)),
+        SizedBox(height: 8),
+        TextFormField(
+          controller: controller,
+          obscureText: obscureText,
+          enabled: enabled,
+          keyboardType: label == "رقم الهاتف" ? TextInputType.phone : TextInputType.text,
+          textAlign: TextAlign.right,
+          decoration: InputDecoration(
+            prefixIcon: Icon(icon, color: Colors.grey),
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide.none,
+            ),
           ),
+          validator: (value) {
+            if ((label == "كلمة المرور الحالية" || label == "كلمة المرور الجديدة (اختياري)") && value!.isEmpty) {
+              return null;
+            }
+            if (value == null || value.isEmpty) return "هذا الحقل مطلوب";
+            if (label == "رقم الهاتف" && !RegExp(r'^[0-9]{10}$').hasMatch(value)) {
+              return "يجب أن يكون رقم الهاتف مكونًا من 10 أرقام";
+            }
+            return null;
+          },
         ),
-        validator: (value) {
-          if (value == null || value.isEmpty) return "هذا الحقل مطلوب";
-          if (label == "رقم الهاتف" && !RegExp(r'^[0-9]{10}$').hasMatch(value)) {
-            return "يجب أن يكون رقم الهاتف مكونًا من 10 أرقام";
-          }
-          return null;
-        },
-      ),
-      SizedBox(height: 10),
-    ],
-  );
-}
+        SizedBox(height: 10),
+      ],
+    );
+  }
 
-
- Widget _buildDropdownField(String label, List<String> items) {
-  return Column(
-    crossAxisAlignment: CrossAxisAlignment.end,
-    children: [
-      Text(
-        label,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Color(0xFF2E7D32),
-          fontSize:18,
-        ),
-      ),
-      SizedBox(height: 8),
-      Directionality(
-        textDirection: TextDirection.rtl,
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          padding: EdgeInsets.symmetric(horizontal: 12),
-          child: DropdownButtonFormField<String>(
-            value: selectedCity,
-            dropdownColor: Colors.white,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(vertical: 10),
+  Widget _buildDropdownField(String label, List<String> items) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Text(label, style: TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF2E7D32), fontSize: 18)),
+        SizedBox(height: 8),
+        Directionality(
+          textDirection: TextDirection.rtl,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
             ),
-            hint: Text(
-              "اختر المدينة",
-              textAlign: TextAlign.right,
-            ),
-            icon: Icon(
-              Icons.arrow_drop_down,
-              color: Color(0xFF2E7D32),
-            ),
-            items: items.map((city) {
-              return DropdownMenuItem(
-                value: city,
-                child: Container(
-                  alignment: Alignment.centerRight, // Align text to the right
-                  child: Text(
-                    city,
-                    textAlign: TextAlign.right,
+            padding: EdgeInsets.symmetric(horizontal: 12),
+            child: DropdownButtonFormField<String>(
+              value: selectedCity,
+              dropdownColor: Colors.white,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(vertical: 10),
+              ),
+              hint: Text("اختر المدينة", textAlign: TextAlign.right),
+              icon: Icon(Icons.arrow_drop_down, color: Color(0xFF2E7D32)),
+              items: items.map((city) {
+                return DropdownMenuItem(
+                  value: city,
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    child: Text(city, textAlign: TextAlign.right),
                   ),
-                ),
-              );
-            }).toList(),
-            onChanged: (value) {
-              setState(() {
-                selectedCity = value;
-              });
-            },
-            validator: (value) => value == null ? "يرجى اختيار المدينة" : null,
+                );
+              }).toList(),
+              onChanged: (value) {
+                setState(() {
+                  selectedCity = value;
+                });
+              },
+              validator: (value) => value == null ? "يرجى اختيار المدينة" : null,
+            ),
           ),
         ),
-      ),
-      SizedBox(height: 10),
-    ],
-  );
-}
+        SizedBox(height: 10),
+      ],
+    );
+  }
 }
