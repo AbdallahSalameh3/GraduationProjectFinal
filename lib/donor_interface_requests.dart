@@ -99,7 +99,7 @@ class _donor_interface_requests extends State<donor_interface_requests> {
                           style: TextStyle(
                             fontSize: 36,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF4CAF50),
+                            color: Color(0xFF2E7D32),
                           ),
                         ),
                       ),
@@ -207,7 +207,11 @@ class _donor_interface_requests extends State<donor_interface_requests> {
                       ),
                     ],
                   ),
-                  child: Icon(Icons.power_settings_new, color: Colors.red),
+                  child: Transform(
+                    alignment: Alignment.center,
+                    transform: Matrix4.rotationY(3.1416), 
+                    child: Icon(Icons.logout, color: Colors.red),
+                  ),
                 ),
               ),
             ),

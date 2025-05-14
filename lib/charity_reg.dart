@@ -103,7 +103,7 @@ class _charity_reg extends State<charity_reg> {
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF4CAF50),
+                        color: Color(0xFF2E7D32),
                         fontFamily: 'Tajawal',
                       ),
                       textAlign: TextAlign.center,

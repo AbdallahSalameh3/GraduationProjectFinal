@@ -25,6 +25,7 @@ class _assign_recipient extends State<assign_recipient> {
 
   Future<List<Map<String, dynamic>>> fetchRecipients() async {
     try {
+      // Get all recipient emails
       QuerySnapshot userTypeSnapshot = await _firestore
           .collection('usertype')
           .where('type', isEqualTo: 'recipient')
@@ -36,10 +37,27 @@ class _assign_recipient extends State<assign_recipient> {
 
       if (recipientEmails.isEmpty) return [];
 
+      // Get recipient details
       QuerySnapshot userSnapshot = await _firestore
           .collection('users')
           .where('email', whereIn: recipientEmails)
           .get();
+
+      // Get already assigned recipients for this donation
+      QuerySnapshot assignedSnapshot = await _firestore
+          .collection('recipients')
+          .where('donationID', isEqualTo: widget.donationId)
+          .where('status', isEqualTo: 'assigned')
+          .get();
+
+      List<String> assignedEmails = assignedSnapshot.docs
+          .map((doc) => doc['recipientID'] as String)
+          .toList();
+
+      // Pre-fill selectedRecipients map
+      for (String email in assignedEmails) {
+        selectedRecipients[email] = true;
+      }
 
       return userSnapshot.docs.map((doc) {
         return {
@@ -61,10 +79,20 @@ class _assign_recipient extends State<assign_recipient> {
           .where((email) => selectedRecipients[email]!)
           .toList();
 
-      if (selectedEmails.isEmpty) return;
+      // Delete previous assignments for this donation
+      QuerySnapshot existingAssignments = await _firestore
+          .collection('recipients')
+          .where('donationID', isEqualTo: widget.donationId)
+          .where('status', isEqualTo: 'assigned')
+          .get();
 
       WriteBatch batch = _firestore.batch();
 
+      for (var doc in existingAssignments.docs) {
+        batch.delete(doc.reference);
+      }
+
+      // Add new selected recipients
       for (String email in selectedEmails) {
         DocumentReference recipientRef =
             _firestore.collection('recipients').doc();
@@ -88,13 +116,12 @@ class _assign_recipient extends State<assign_recipient> {
       await batch.commit();
 
       Navigator.pushReplacement(
-         context,
-         MaterialPageRoute(
-             builder: (context) =>
-                 charity_dashboard(charityID: widget.charityID)),
-       );
-      //Navigator.pop(context, true);
-
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              charity_dashboard(charityID: widget.charityID, initialIndex: 1),
+        ),
+      );
     } catch (e) {
       print("Error assigning recipients: $e");
     }
@@ -105,10 +132,9 @@ class _assign_recipient extends State<assign_recipient> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF1FAF2), // Light green background
+      backgroundColor: Color(0xFFF1FAF2),
       body: Stack(
         children: [
-          // Back button
           Positioned(
             top: screenHeight * 0.05,
             left: 20,
@@ -133,7 +159,6 @@ class _assign_recipient extends State<assign_recipient> {
               ),
             ),
           ),
-          // Main content
           Padding(
             padding: EdgeInsets.only(top: screenHeight * 0.10),
             child: FutureBuilder<List<Map<String, dynamic>>>(
@@ -166,8 +191,8 @@ class _assign_recipient extends State<assign_recipient> {
                           return Card(
                             color: Colors.white,
                             elevation: 3,
-                            margin:
-                                EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 10),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
@@ -190,8 +215,9 @@ class _assign_recipient extends State<assign_recipient> {
                               ),
                               trailing: Checkbox(
                                 activeColor: Color(0xFF4CAF50),
-                                value:
-                                    selectedRecipients[recipient['email']] ?? false,
+                                value: selectedRecipients[
+                                        recipient['email']] ??
+                                    false,
                                 onChanged: (bool? value) {
                                   setState(() {
                                     selectedRecipients[recipient['email']] =
@@ -208,14 +234,16 @@ class _assign_recipient extends State<assign_recipient> {
                       padding: EdgeInsets.all(20),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFF4CAF50),
-                                    foregroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                  ),
+                          backgroundColor: Color(0xFF4CAF50),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 15),
+                          textStyle: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
                         onPressed: assignRecipients,
                         child: Text(
                           "تعيين المستفيدين",

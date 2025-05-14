@@ -148,16 +148,16 @@ class _users_login extends State<users_login> {
                       "نسيت الرقم السري",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
+                        fontSize: 14,
+                        color:  Color(0xFF4CAF50), 
+                        //decoration: TextDecoration.underline,
                       ),
                     ),
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF4CAF50), // Medium green button color
+                      backgroundColor: Color(0xFF4CAF50), 
                       foregroundColor: Colors.white,
                       fixedSize: Size(MediaQuery.of(context).size.width * 0.8, 45),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),

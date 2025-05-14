@@ -48,7 +48,7 @@ class donor_view_donation extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 36,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF4CAF50),
+                        color: Color(0xFF2E7D32),
                       ),
                     ),
                   ),

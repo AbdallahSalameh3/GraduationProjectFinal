@@ -55,7 +55,7 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
                       style: const TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF4CAF50),
+                        color: Color(0xFF2E7D32),
                         fontFamily: 'Tajawal',
                       ),
                       textAlign: TextAlign.center,

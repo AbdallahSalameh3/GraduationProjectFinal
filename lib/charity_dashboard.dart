@@ -5,21 +5,23 @@ import 'package:graduation_project/past_requests.dart';
 
 class charity_dashboard extends StatefulWidget {
   final String charityID;
+  final int initialIndex; // Added: allow specifying initial index
 
-  charity_dashboard({required this.charityID});
+  charity_dashboard({required this.charityID, this.initialIndex = 0});
 
   @override
   _charity_dashboard createState() => _charity_dashboard();
 }
 
 class _charity_dashboard extends State<charity_dashboard> {
-  int _selectedIndex = 0;
+  late int _selectedIndex;
 
   late final List<Widget> _pages;
 
   @override
   void initState() {
     super.initState();
+    _selectedIndex = widget.initialIndex; // Use initial index if provided
     _pages = [
       pending_requests(charityID: widget.charityID),
       accepted_requests(charityID: widget.charityID),

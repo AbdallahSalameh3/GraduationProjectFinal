@@ -80,7 +80,7 @@ class _donation_request_form extends State<donation_request_form> {
         'pickupTime': pickupTime.text.trim(),
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('تم إرسال التبرع بنجاح')));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('تم إرسال التبرع بنجاح'), backgroundColor:Colors.green));
       Navigator.pop(context); // Go back after submission
     } catch (e) {
       print("Error saving donation: $e");

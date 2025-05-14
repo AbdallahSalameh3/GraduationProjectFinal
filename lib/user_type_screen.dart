@@ -32,7 +32,7 @@ class _user_type_screen extends State<user_type_screen> {
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Tajawal',
-                        color: Color(0xFF4CAF50),
+                        color: Color(0xFF2E7D32),
                       ),
                     ),
                   ),
@@ -135,9 +135,8 @@ class _user_type_screen extends State<user_type_screen> {
           width: screenWidth * 0.9,
           padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start, // Aligning the content to the left
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top image
               Row(
                 children: [
                   Container(

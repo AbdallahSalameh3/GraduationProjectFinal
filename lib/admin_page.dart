@@ -191,7 +191,11 @@ class _admin_page extends State<admin_page> {
                           ),
                         ],
                       ),
-                      child: Icon(Icons.power_settings_new, color: Colors.red),
+                      child: Transform(
+                        alignment: Alignment.center,
+                        transform: Matrix4.rotationY(3.1416),
+                        child: Icon(Icons.logout, color: Colors.red),
+                      ),
                     ),
                   ),
                 ),

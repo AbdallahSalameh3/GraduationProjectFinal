@@ -156,7 +156,7 @@ class _pending_request_page extends State<pending_request_page> {
 
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text('تم قبول التبرع بنجاح'),
+                                content: Text('تم قبول التبرع و نقله الى التبرعات المقبولة'),
                                 backgroundColor: Colors.green,
                               ),
                             );

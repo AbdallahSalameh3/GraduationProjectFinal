@@ -161,7 +161,11 @@ class admin_view_charities extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: Icon(Icons.power_settings_new, color: Colors.red),
+                    child: Transform(
+                      alignment: Alignment.center,
+                      transform: Matrix4.rotationY(3.1416), 
+                      child: Icon(Icons.logout, color: Colors.red),
+                    ),
                   ),
                 ),
               ),

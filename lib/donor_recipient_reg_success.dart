@@ -26,7 +26,7 @@ class _donor_recipient_Reg_success extends State<donor_recipient_Reg_success> {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF4CAF50),
+                    color: Color(0xFF2E7D32),
                     fontFamily: 'Tajawal',
                   ),
                   textAlign: TextAlign.center,

@@ -95,7 +95,8 @@ class _view_accepted_request extends State<view_accepted_request> {
       }
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('تم تحديث الحالة إلى تم التسليم لجميع المستلمين')),
+        SnackBar(content: Text('تم نقل الطلب الى الطلبات السابقة'),backgroundColor: Colors.green,),
+        
       );
 
       Navigator.pushAndRemoveUntil(

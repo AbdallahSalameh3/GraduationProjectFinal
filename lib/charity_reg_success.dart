@@ -29,7 +29,7 @@ class _charity_reg_success extends State<charity_reg_success> {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF4CAF50),
+                      color: Color(0xFF2E7D32),
                     ),
                     textAlign: TextAlign.center,
                   ),
