@@ -5,7 +5,7 @@ import 'db_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
+  WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
     await Firebase.initializeApp(options: FirebaseOptions(
         apiKey: "AIzaSyDIccwJ4FL8FmGQcJY8sVzL5MCIB59FLv4",
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.black), // if you want icons to stay black
+          iconTheme: IconThemeData(color: Colors.black), 
         ),
       ),
       debugShowCheckedModeBanner: false,

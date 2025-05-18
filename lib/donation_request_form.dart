@@ -105,7 +105,7 @@ class _donation_request_form extends State<donation_request_form> {
                   children: [
                     SizedBox(height: 60), 
                     Center(
-                      child: Text('التبرع', style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
+                      child: Text('تقديم تبرع جديد', style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
                     ),
                     SizedBox(height: 30),
                     _buildDropdown('المدينة', cities, selectedCity, (value) {

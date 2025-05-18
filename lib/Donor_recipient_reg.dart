@@ -272,7 +272,7 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
+        Text(label, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
         const SizedBox(height: 8),
         Directionality(
           textDirection: TextDirection.rtl,
