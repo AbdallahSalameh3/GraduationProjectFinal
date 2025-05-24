@@ -86,7 +86,7 @@ class _donor_interface_requests extends State<donor_interface_requests> {
           children: [
             SafeArea(
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 80.0), // Space for floating button
+                padding: const EdgeInsets.only(bottom: 80.0), 
                 child: SingleChildScrollView(
                   physics: BouncingScrollPhysics(),
                   child: Column(
@@ -160,7 +160,6 @@ class _donor_interface_requests extends State<donor_interface_requests> {
               ),
             ),
 
-            // Floating Donate Now Button
             Positioned(
               bottom: 20,
               left: 20,
@@ -186,7 +185,6 @@ class _donor_interface_requests extends State<donor_interface_requests> {
               ),
             ),
 
-            // Logout button (Top Left)
             Positioned(
               top: MediaQuery.of(context).size.height * 0.05,
               left: 20,
@@ -216,7 +214,6 @@ class _donor_interface_requests extends State<donor_interface_requests> {
               ),
             ),
 
-            // Profile button (Top Right)
             Positioned(
               top: MediaQuery.of(context).size.height * 0.05,
               right: 20,

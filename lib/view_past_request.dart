@@ -30,14 +30,13 @@ class _view_past_request extends State<view_past_request> {
     additionalInfo = TextEditingController(text: widget.donationData['additionalInfo'] ?? '');
     pickupTime = TextEditingController(text: widget.donationData['pickupTime'] ?? 'غير متوفر');
 
-    recipients = TextEditingController(text: 'جاري تحميل المستلمين...'); // 🔹 initialize here
-
+    recipients = TextEditingController(text: 'جاري تحميل المستلمين...'); 
     _initializeRecipientFields();
     _fetchDonorDetails();
   }
 
   void _initializeRecipientFields() async {
-    String donationID = widget.donationData['donationID']; // Make sure donationID is passed
+    String donationID = widget.donationData['donationID']; 
 
     try {
       QuerySnapshot snapshot = await FirebaseFirestore.instance
@@ -180,7 +179,7 @@ class _view_past_request extends State<view_past_request> {
     width: double.infinity,
     margin: EdgeInsets.only(bottom: 16),
     child: Column(
-      crossAxisAlignment: CrossAxisAlignment.end, // Align to the right
+      crossAxisAlignment: CrossAxisAlignment.end, 
       children: [
         Text(
           title,
@@ -189,8 +188,8 @@ class _view_past_request extends State<view_past_request> {
             fontSize: 18,
             color: Color(0xFF2E7D32),
           ),
-          textAlign: TextAlign.right, // Align text to the right
-          textDirection: TextDirection.rtl, // Set text direction to RTL
+          textAlign: TextAlign.right, 
+          textDirection: TextDirection.rtl, 
         ),
         SizedBox(height: 8),
         Container(
@@ -206,8 +205,8 @@ class _view_past_request extends State<view_past_request> {
             maxLines: 1,
             decoration: InputDecoration.collapsed(hintText: ''),
             style: TextStyle(fontSize: 16),
-            textAlign: TextAlign.right, // Align text to the right
-            textDirection: TextDirection.rtl, // Set text direction to RTL
+            textAlign: TextAlign.right, 
+            textDirection: TextDirection.rtl, 
           ),
         ),
       ],
@@ -220,7 +219,7 @@ Widget _buildMultilineInfoCard(String title, TextEditingController controller) {
     width: double.infinity,
     margin: EdgeInsets.only(bottom: 16),
     child: Column(
-      crossAxisAlignment: CrossAxisAlignment.end, // Align to the right
+      crossAxisAlignment: CrossAxisAlignment.end, 
       children: [
         Text(
           title,
@@ -229,8 +228,8 @@ Widget _buildMultilineInfoCard(String title, TextEditingController controller) {
             fontSize: 18,
             color: Color(0xFF2E7D32),
           ),
-          textAlign: TextAlign.right, // Align text to the right
-          textDirection: TextDirection.rtl, // Set text direction to RTL
+          textAlign: TextAlign.right, 
+          textDirection: TextDirection.rtl,
         ),
         SizedBox(height: 8),
         Container(
@@ -246,8 +245,8 @@ Widget _buildMultilineInfoCard(String title, TextEditingController controller) {
             maxLines: null,
             decoration: InputDecoration.collapsed(hintText: ''),
             style: TextStyle(fontSize: 16),
-            textAlign: TextAlign.right, // Align text to the right
-            textDirection: TextDirection.rtl, // Set text direction to RTL
+            textAlign: TextAlign.right, 
+            textDirection: TextDirection.rtl, 
           ),
         ),
       ],

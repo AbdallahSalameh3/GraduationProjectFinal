@@ -14,7 +14,7 @@ class _login_or_signup_screen extends State<login_or_signup_screen> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color(0xFFF1FAF2), // Light green background
+      backgroundColor: Color(0xFFF1FAF2), 
       body: Stack(
         children: [
           Column(
@@ -67,7 +67,7 @@ class _login_or_signup_screen extends State<login_or_signup_screen> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
-                  foregroundColor: Color(0xFF4CAF50), // Green border color
+                  foregroundColor: Color(0xFF4CAF50), 
                   fixedSize: Size(screenWidth * 0.8, 50),
                   side: const BorderSide(color: Color(0xFF4CAF50), width: 2),
                   shape: RoundedRectangleBorder(

@@ -5,7 +5,7 @@ import 'package:graduation_project/past_requests.dart';
 
 class charity_dashboard extends StatefulWidget {
   final String charityID;
-  final int initialIndex; // Added: allow specifying initial index
+  final int initialIndex; 
 
   charity_dashboard({required this.charityID, this.initialIndex = 0});
 
@@ -21,7 +21,7 @@ class _charity_dashboard extends State<charity_dashboard> {
   @override
   void initState() {
     super.initState();
-    _selectedIndex = widget.initialIndex; // Use initial index if provided
+    _selectedIndex = widget.initialIndex; 
     _pages = [
       pending_requests(charityID: widget.charityID),
       accepted_requests(charityID: widget.charityID),
@@ -43,10 +43,10 @@ class _charity_dashboard extends State<charity_dashboard> {
       );
     }
     return Directionality(
-      textDirection: TextDirection.rtl, // Arabic RTL support
+      textDirection: TextDirection.rtl, 
       child: Scaffold(
         body: Container(
-          color: Color(0xFFF1FAF2), // very light green background
+          color: Color(0xFFF1FAF2), 
           child: _pages[_selectedIndex],
         ),
         bottomNavigationBar: BottomNavigationBar(

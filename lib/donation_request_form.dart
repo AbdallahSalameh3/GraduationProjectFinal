@@ -34,9 +34,9 @@ class _donation_request_form extends State<donation_request_form> {
         throw Exception("Counter document does not exist!");
       }
 
-      int newID = (counterSnapshot['lastID'] ?? 0) + 1; // Get last ID and increment
+      int newID = (counterSnapshot['lastID'] ?? 0) + 1; 
 
-      transaction.update(counterRef, {'lastID': newID}); // Update counter in Firestore
+      transaction.update(counterRef, {'lastID': newID}); 
 
       return newID;
     });
@@ -50,8 +50,7 @@ class _donation_request_form extends State<donation_request_form> {
 
     try {
       int donationID = await _generateDonationID();
-      String donationIDString = donationID.toString(); // Convert only after awaiting
-      // Fetch food type document to get validityDays
+      String donationIDString = donationID.toString(); 
       QuerySnapshot foodTypeSnapshot = await _firestore
           .collection('foodType')
           .where('foodType', isEqualTo: selectedFoodType)
@@ -69,10 +68,10 @@ class _donation_request_form extends State<donation_request_form> {
 
       await _firestore.collection('donation').doc(donationIDString).set({
         'donorID': widget.donoremail,
-        'charityID': null, // No charity assigned yet
+        'charityID': null, 
         'city': selectedCity,
         'sublocation': sublocation.text.trim(),
-        'donationdate': Timestamp.fromDate(donationDate), // Store as Firestore Timestamp
+        'donationdate': Timestamp.fromDate(donationDate), 
         'expirydate': Timestamp.fromDate(expiryDate),
         'status': 'sent', // Initial status
         'additionalInfo': additionalInfo.text.trim(),
@@ -81,7 +80,7 @@ class _donation_request_form extends State<donation_request_form> {
       });
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('تم إرسال التبرع بنجاح'), backgroundColor:Colors.green));
-      Navigator.pop(context); // Go back after submission
+      Navigator.pop(context); 
     } catch (e) {
       print("Error saving donation: $e");
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('حدث خطأ أثناء حفظ التبرع')));
@@ -125,24 +124,24 @@ class _donation_request_form extends State<donation_request_form> {
                     Center(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFF4CAF50),
-                                    foregroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                  ),
+                          backgroundColor: Color(0xFF4CAF50),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
                         onPressed: _submitDonation,
                         child: Text('إرسال'),
                       ),
                     ),
-                    SizedBox(height: 20), // Add extra space at the bottom
+                    SizedBox(height: 20), 
                   ],
                 ),
               ),
             ),
-            // Back Button
+
             Positioned(
               top: screenHeight * 0.05,
               left: 20,
@@ -184,7 +183,6 @@ class _donation_request_form extends State<donation_request_form> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(5),
-          //border: Border.all(color: Colors.grey, width: 1),
         ),
         child: Directionality(
           textDirection: TextDirection.rtl,
@@ -194,7 +192,7 @@ class _donation_request_form extends State<donation_request_form> {
             isExpanded: true,
             underline: SizedBox(),
             onChanged: onChanged,
-            dropdownColor: Colors.white, // Set background color of the dropdown items
+            dropdownColor: Colors.white,
             items: items.map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -218,7 +216,7 @@ class _donation_request_form extends State<donation_request_form> {
       hintText: hint,
       filled: true,
       fillColor: Colors.white,
-      border: InputBorder.none, // Remove all borders
+      border: InputBorder.none, 
     ),
   );
 }

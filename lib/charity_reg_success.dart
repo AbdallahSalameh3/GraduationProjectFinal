@@ -14,7 +14,7 @@ class _charity_reg_success extends State<charity_reg_success> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF1FAF2), // Light green background
+      backgroundColor: Color(0xFFF1FAF2),
       body: Stack(
         children: [
           // Main Content
@@ -22,7 +22,7 @@ class _charity_reg_success extends State<charity_reg_success> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Padding(
+               Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     "تم ارسال طلب التسجيل يرجى انتظار الموافقة",
@@ -34,7 +34,7 @@ class _charity_reg_success extends State<charity_reg_success> {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(height: 30),
+               SizedBox(height: 30),
                 Container(
                   width: 120,
                   height: 120,
@@ -42,7 +42,7 @@ class _charity_reg_success extends State<charity_reg_success> {
                     shape: BoxShape.circle,
                     color: Color(0xFF4CAF50),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.check,
                     color: Colors.white,
                     size: 80,
@@ -53,7 +53,6 @@ class _charity_reg_success extends State<charity_reg_success> {
             ),
           ),
 
-          // Floating Back Button
           Positioned(
             top: screenHeight * 0.05,
             left: 20,
@@ -81,7 +80,7 @@ class _charity_reg_success extends State<charity_reg_success> {
                     ),
                   ],
                 ),
-                child: const Icon(Icons.arrow_back, color: Color(0xFF2E7D32)), 
+                child: Icon(Icons.arrow_back, color: Color(0xFF2E7D32)), 
               ),
             ),
           ),

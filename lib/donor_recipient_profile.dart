@@ -56,7 +56,6 @@ class _donor_recipient_profile extends State<donor_recipient_profile> {
 
     String passwordToSave = storedPassword!;
 
-    // Only validate and update password if newPassword is not empty
     if (newPassword.isNotEmpty) {
       if (currentPassword.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -88,7 +87,6 @@ class _donor_recipient_profile extends State<donor_recipient_profile> {
       SnackBar(content: Text("تم تحديث الملف الشخصي بنجاح"), backgroundColor: Colors.green),
     );
 
-    // Clear password fields after update
     currentPasswordController.clear();
     newPasswordController.clear();
   }

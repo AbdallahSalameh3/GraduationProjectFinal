@@ -13,15 +13,14 @@ class _donor_recipient_Reg_success extends State<donor_recipient_Reg_success> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color(0xFFF1FAF2), // Light green background
+      backgroundColor: Color(0xFFF1FAF2), 
       body: Stack(
         children: [
-          // Main Content
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+               Text(
                   "!تم التسجيل بنجاح",
                   style: TextStyle(
                     fontSize: 24,
@@ -31,7 +30,7 @@ class _donor_recipient_Reg_success extends State<donor_recipient_Reg_success> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 20),
+               SizedBox(height: 20),
                 Container(
                   width: 120,
                   height: 120,
@@ -39,7 +38,7 @@ class _donor_recipient_Reg_success extends State<donor_recipient_Reg_success> {
                     shape: BoxShape.circle,
                     color: Color(0xFF4CAF50),
                   ),
-                  child: const Icon(
+                  child: Icon(
                     Icons.check,
                     color: Colors.white,
                     size: 80,
@@ -49,7 +48,6 @@ class _donor_recipient_Reg_success extends State<donor_recipient_Reg_success> {
             ),
           ),
 
-          // Floating Back Button (Top-Left)
           Positioned(
             top: screenHeight * 0.05,
             left: 20,
@@ -73,11 +71,11 @@ class _donor_recipient_Reg_success extends State<donor_recipient_Reg_success> {
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 6,
-                      offset: const Offset(0, 2),
+                      offset: Offset(0, 2),
                     ),
                   ],
                 ),
-                child: const Icon(Icons.arrow_back, color: Color(0xFF2E7D32)),
+                child: Icon(Icons.arrow_back, color: Color(0xFF2E7D32)),
               ),
             ),
           ),

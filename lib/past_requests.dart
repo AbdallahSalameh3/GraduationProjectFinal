@@ -58,8 +58,6 @@ class _past_requests extends State<past_requests> {
         donationData['recipients'] = recipients;
         donationData['recipientCount'] = recipients.length;
 
-        //print("Donation $donationID has ${recipients.length} delivered recipients");
-
         return donationData;
       }).toList();
 
@@ -168,8 +166,6 @@ class _past_requests extends State<past_requests> {
                 );
               },
             ),
-
-            // Logout button
             Positioned(
               top: MediaQuery.of(context).size.height * 0.05,
               left: 20,
@@ -198,7 +194,6 @@ class _past_requests extends State<past_requests> {
                 ),
               ),
             ),
-            // Profile button (Top Right)
             Positioned(
               top: MediaQuery.of(context).size.height * 0.05,
               right: 20,
@@ -226,7 +221,7 @@ class _past_requests extends State<past_requests> {
                       ),
                     ],
                   ),
-                  child: Icon(Icons.person, color: Color(0xFF2E7D32)), // Deep Green
+                  child: Icon(Icons.person, color: Color(0xFF2E7D32)), 
                 ),
               ),
             ),

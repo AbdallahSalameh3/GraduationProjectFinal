@@ -42,7 +42,6 @@ class _users_login extends State<users_login> {
     String password = passwordController.text.trim();
 
     try {
-      // -------- Admin Login (Plain Text Password) --------
       var adminQuery = await _firestore.collection("admin")
           .where("email", isEqualTo: email)
           .get();
@@ -64,8 +63,6 @@ class _users_login extends State<users_login> {
           return;
         }
       }
-
-      // -------- Regular User Login (Hashed Password with Bcrypt) --------
       DocumentSnapshot userDoc = await _firestore.collection('users').doc(email).get();
 
       if (!userDoc.exists) {
@@ -125,7 +122,7 @@ class _users_login extends State<users_login> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color(0xFFF1FAF2), // Light green background
+      backgroundColor: Color(0xFFF1FAF2), 
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -150,7 +147,6 @@ class _users_login extends State<users_login> {
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                         color:  Color(0xFF4CAF50), 
-                        //decoration: TextDecoration.underline,
                       ),
                     ),
                   ),
@@ -169,16 +165,10 @@ class _users_login extends State<users_login> {
               ),
             ),
           ),
-
-          // Floating Back Button
           Positioned(
             top: screenHeight * 0.05,
             left: 20,
             child: InkWell(
-              // onTap: () => Navigator.pushReplacement(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => login_or_signup_screen()),
-              // ),
               onTap: () => Navigator.pop(
                 context,
               ),
@@ -214,7 +204,6 @@ class _users_login extends State<users_login> {
         textAlign: TextAlign.right,
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
-          //labelText: label,
           hintText: placeholder,
           hintStyle: TextStyle(color: Colors.grey),
           hintTextDirection: TextDirection.rtl,
@@ -251,7 +240,6 @@ class _users_login extends State<users_login> {
         obscureText: !_passwordVisible,
         textAlign: TextAlign.right,
         decoration: InputDecoration(
-          //labelText: label,
           hintText: "أدخل كلمة المرور",
           hintStyle: TextStyle(color: Colors.grey),
           hintTextDirection: TextDirection.rtl,

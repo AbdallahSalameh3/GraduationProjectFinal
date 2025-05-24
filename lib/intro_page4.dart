@@ -9,7 +9,7 @@ class intro_page4 extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF1FAF2), // Light green background
+      backgroundColor: Color(0xFFF1FAF2),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -26,32 +26,29 @@ class intro_page4 extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // Title
             const Text(
               "جمعياتنا هنا لمساعدتك",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF2E7D32), // Dark Green
+                color: Color(0xFF2E7D32),
                 fontFamily: 'Tajawal',
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
 
-            // Subtitle
             const Text(
               "تساعد جمعياتنا في تسهيل استلام وايصال التبرعات.",
               style: TextStyle(
                 fontSize: 16,
-                color: Color(0xFF4CAF50), // Softer Green
+                color: Color(0xFF4CAF50), 
                 fontFamily: 'Tajawal',
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
 
-            // DOT INDICATORS (third dot active)
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -77,7 +74,7 @@ class intro_page4 extends StatelessWidget {
                   width: 10,
                   height: 10,
                   decoration: const BoxDecoration(
-                    color: Color(0xFF4CAF50), // Active green
+                    color: Color(0xFF4CAF50), 
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -94,8 +91,6 @@ class intro_page4 extends StatelessWidget {
             ),
 
             const SizedBox(height: 30),
-
-            // PREVIOUS AND NEXT BUTTONS SIDE BY SIDE
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

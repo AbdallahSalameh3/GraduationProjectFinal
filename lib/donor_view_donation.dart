@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart'; // Import for date formatting
+import 'package:intl/intl.dart'; 
 
 class donor_view_donation extends StatelessWidget {
   final QueryDocumentSnapshot donation;
 
   donor_view_donation({required this.donation});
 
-  // Method to format the Timestamp fields
   String _formatDate(Timestamp timestamp) {
     DateTime date = timestamp.toDate();
-    return DateFormat('yyyy-MM-dd HH:mm').format(date); // Change the format as needed
+    return DateFormat('yyyy-MM-dd HH:mm').format(date); 
   }
   String _getArabicStatus(String status) {
     switch (status) {
@@ -31,7 +30,7 @@ class donor_view_donation extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF1FAF2), // Light green background
+      backgroundColor: Color(0xFFF1FAF2), 
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -66,7 +65,7 @@ class donor_view_donation extends StatelessWidget {
               ),
             ),
           ),
-          // Corrected floating back button using Positioned inside Stack
+
           Positioned(
             top: screenHeight * 0.05,
             left: 20,
@@ -105,7 +104,7 @@ class donor_view_donation extends StatelessWidget {
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF2E7D32), // Label deep green
+            color: Color(0xFF2E7D32), 
           ),
         ),
         SizedBox(height: 10),
@@ -113,16 +112,15 @@ class donor_view_donation extends StatelessWidget {
           width: double.infinity,
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Colors.white, // White field background
+            color: Colors.white, 
             borderRadius: BorderRadius.circular(5),
-            //border: Border.all(color: Colors.grey, width: 1),
           ),
           child: Text(
             value,
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 16,
-              color: Colors.black, // Field value medium green
+              color: Colors.black, 
             ),
           ),
         ),

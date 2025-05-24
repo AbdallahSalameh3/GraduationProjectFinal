@@ -21,31 +21,24 @@ class _intro_page1 extends State<intro_page1> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double imageSize = screenWidth * 0.55; // Adjusted a bit smaller for elegance
+    double imageSize = screenWidth * 0.55; 
 
     return Scaffold(
-      // Soft background color
-      backgroundColor: Color(0xFFF1FAF2), // very light greenish background
-
+      backgroundColor: Color(0xFFF1FAF2), 
       body: Center(
-        child: SingleChildScrollView( // Prevent overflow
+        child: SingleChildScrollView( 
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Hands Logo
               Image.asset(
                 'assets/logo2.png',
                 width: imageSize,
                 height: imageSize,
                 fit: BoxFit.contain,
               ),
-              
-              //SizedBox(height: 20), // Space between images
-
-              // App Name Text Logo
               Image.asset(
                 'assets/at3mni2.png',
-                width: imageSize, // slightly smaller for balance
+                width: imageSize,
                 height: imageSize,
                 fit: BoxFit.contain,
               ),

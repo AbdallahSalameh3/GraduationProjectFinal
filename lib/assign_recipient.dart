@@ -20,12 +20,11 @@ class _assign_recipient extends State<assign_recipient> {
   @override
   void initState() {
     super.initState();
-    _recipientFuture = fetchRecipients(); // Cache the result
+    _recipientFuture = fetchRecipients(); 
   }
 
   Future<List<Map<String, dynamic>>> fetchRecipients() async {
     try {
-      // Get all recipient emails
       QuerySnapshot userTypeSnapshot = await _firestore
           .collection('usertype')
           .where('type', isEqualTo: 'recipient')
@@ -36,14 +35,11 @@ class _assign_recipient extends State<assign_recipient> {
           .toList();
 
       if (recipientEmails.isEmpty) return [];
-
-      // Get recipient details
       QuerySnapshot userSnapshot = await _firestore
           .collection('users')
           .where('email', whereIn: recipientEmails)
           .get();
 
-      // Get already assigned recipients for this donation
       QuerySnapshot assignedSnapshot = await _firestore
           .collection('recipients')
           .where('donationID', isEqualTo: widget.donationId)
@@ -54,7 +50,6 @@ class _assign_recipient extends State<assign_recipient> {
           .map((doc) => doc['recipientID'] as String)
           .toList();
 
-      // Pre-fill selectedRecipients map
       for (String email in assignedEmails) {
         selectedRecipients[email] = true;
       }
@@ -79,7 +74,6 @@ class _assign_recipient extends State<assign_recipient> {
           .where((email) => selectedRecipients[email]!)
           .toList();
 
-      // Delete previous assignments for this donation
       QuerySnapshot existingAssignments = await _firestore
           .collection('recipients')
           .where('donationID', isEqualTo: widget.donationId)
@@ -92,7 +86,6 @@ class _assign_recipient extends State<assign_recipient> {
         batch.delete(doc.reference);
       }
 
-      // Add new selected recipients
       for (String email in selectedEmails) {
         DocumentReference recipientRef =
             _firestore.collection('recipients').doc();

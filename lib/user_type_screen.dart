@@ -15,7 +15,7 @@ class _user_type_screen extends State<user_type_screen> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF1FAF2), // Light green background
+      backgroundColor: Color(0xFFF1FAF2), 
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -82,7 +82,6 @@ class _user_type_screen extends State<user_type_screen> {
             ),
           ),
 
-          // Back Button
           Positioned(
             top: screenHeight * 0.05,
             left: 20,
@@ -162,9 +161,9 @@ class _user_type_screen extends State<user_type_screen> {
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Tajawal',
-                            color: Color(0xFF4CAF50), // Green color for title
+                            color: Color(0xFF4CAF50), 
                           ),
-                          textAlign: TextAlign.center, // Center the title
+                          textAlign: TextAlign.center, 
                         ),
                         const SizedBox(height: 10),
                         Text(
@@ -172,9 +171,9 @@ class _user_type_screen extends State<user_type_screen> {
                           style: TextStyle(
                             fontSize: 16,
                             fontFamily: 'Tajawal',
-                            color: Colors.grey[700], // Grey color for description
+                            color: Colors.grey[700], 
                           ),
-                          textAlign: TextAlign.center, // Center the description
+                          textAlign: TextAlign.center, 
                         ),
                       ],
                     ),

@@ -202,7 +202,6 @@ class _accepted_requests extends State<accepted_requests> {
               },
             ),
 
-            // Logout button
             Positioned(
               top: MediaQuery.of(context).size.height * 0.05,
               left: 20,
@@ -225,13 +224,12 @@ class _accepted_requests extends State<accepted_requests> {
                   ),
                   child: Transform(
                     alignment: Alignment.center,
-                    transform: Matrix4.rotationY(3.1416), // 180 degrees
+                    transform: Matrix4.rotationY(3.1416),
                     child: Icon(Icons.logout, color: Colors.red),
                   ),
                 ),
               ),
             ),
-            // Profile button (Top Right)
             Positioned(
               top: MediaQuery.of(context).size.height * 0.05,
               right: 20,
@@ -259,7 +257,7 @@ class _accepted_requests extends State<accepted_requests> {
                       ),
                     ],
                   ),
-                  child: Icon(Icons.person, color: Color(0xFF2E7D32)), // Deep Green
+                  child: Icon(Icons.person, color: Color(0xFF2E7D32)),
                 ),
               ),
             ),

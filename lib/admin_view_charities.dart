@@ -61,7 +61,7 @@ class admin_view_charities extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Directionality(
-      textDirection: TextDirection.rtl, // Whole page RTL
+      textDirection: TextDirection.rtl, 
       child: Scaffold(
         backgroundColor: Color(0xFFF1FAF2),
         body: SafeArea(
@@ -176,9 +176,9 @@ class admin_view_charities extends StatelessWidget {
                 child: WillPopScope(
                   onWillPop: () async {
                     _confirmLogout(context);
-                    return false; // Prevent default back navigation
+                    return false; 
                   },
-                  child: SizedBox.shrink(), // Empty container to attach WillPopScope
+                  child: SizedBox.shrink(), 
                 ),
               ),
             ],
@@ -239,7 +239,7 @@ class admin_view_charities extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch, // Stretch to full width
+          crossAxisAlignment: CrossAxisAlignment.stretch, 
           children: [
             Align(
               alignment: Alignment.centerRight,

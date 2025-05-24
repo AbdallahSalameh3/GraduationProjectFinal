@@ -128,7 +128,6 @@ class _pending_request_page extends State<pending_request_page> {
                     _buildInfoCard('اسم المتبرع', Name),
                     _buildInfoCard('رقم الهاتف', phoneNumber),
                     _buildInfoCard('الموقع', city),
-                    //_buildInfoCard('الموقع الفرعي', sublocation),
                     _buildInfoCard('نوع الطعام', foodType),
                     _buildInfoCard('تفاصيل / ملاحظات اضافية', additionalInfo, isMultiline: true),
                     _buildInfoCard('وقت الاستلام المفضل', pickupTime),
@@ -136,14 +135,14 @@ class _pending_request_page extends State<pending_request_page> {
                     Center(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFF4CAF50),
-                                    foregroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                  ),
+                          backgroundColor: Color(0xFF4CAF50),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
                         onPressed: () async {
                           try {
                             await FirebaseFirestore.instance

@@ -34,12 +34,12 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color(0xFFF1FAF2),
+      backgroundColor: Color(0xFFF1FAF2),
       body: Stack(
         children: [
           SingleChildScrollView(
              physics: BouncingScrollPhysics(),
-            padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
+            padding:EdgeInsets.only(top: 70, left: 20, right: 20),
             child: Form(
               key: _formKey,
               child: Column(
@@ -47,12 +47,12 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
                 children: [
                   SizedBox(height: 30),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
+                    padding: EdgeInsets.only(bottom: 20),
                     child: Text(
                       widget.userType == "donor"
                           ? "تسجيل متبرع جديد"
                           : "تسجيل متبرع له جديد",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF2E7D32),
@@ -67,23 +67,23 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
                   _buildPhoneField("رقم الهاتف", "مثال:0799999999", phoneNumberController),
                   _buildDropdownField("المدينة", cities),
                   _buildTextField("الموقع الفرعي", "مثال: الدوار السابع", sublocationController, Icons.location_on),
-                  const SizedBox(height: 10),
+                  SizedBox(height: 10),
                   _buildPasswordField("كلمة المرور", passwordController, true),
                   _buildPasswordField("تأكيد كلمة المرور", confirmPasswordController, false),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
                   Center(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFF4CAF50),
-                                    foregroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                  ),
+                        backgroundColor: Color(0xFF4CAF50),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
                       onPressed: _register,
-                      child: const Text("تسجيل"),
+                      child: Text("تسجيل"),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -111,7 +111,7 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
                     ),
                   ],
                 ),
-                child: const Icon(Icons.arrow_back, color: Color(0xFF2E7D32)),
+                child: Icon(Icons.arrow_back, color: Color(0xFF2E7D32)),
               ),
             ),
           ),
@@ -124,8 +124,8 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(label, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
-        const SizedBox(height: 8),
+        Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
+        SizedBox(height: 8),
         TextFormField(
           controller: controller,
           textAlign: TextAlign.right,
@@ -163,8 +163,8 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(label, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
-        const SizedBox(height: 8),
+        Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
+        SizedBox(height: 8),
         TextFormField(
           controller: controller,
           textAlign: TextAlign.right,
@@ -174,7 +174,7 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
             hintText: placeholder,
             hintStyle: TextStyle(color: Colors.grey),
             hintTextDirection: TextDirection.rtl,
-            prefixIcon: const Icon(Icons.phone, color: Colors.grey),
+            prefixIcon: Icon(Icons.phone, color: Colors.grey),
             filled: true,
             fillColor: Colors.white,
             border: OutlineInputBorder(
@@ -207,8 +207,8 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.end,
     children: [
-      Text(label, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
-      const SizedBox(height: 8),
+      Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
+      SizedBox(height: 8),
       TextFormField(
         controller: controller,
         obscureText: isPassword ? !_passwordVisible : !_confirmPasswordVisible,
@@ -234,22 +234,21 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
               });
             },
           ),
-          suffixIcon: const Icon(Icons.lock, color: Colors.grey),
+          suffixIcon: Icon(Icons.lock, color: Colors.grey),
           filled: true,
           fillColor: Colors.white,
           border: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(12),
-    borderSide: BorderSide.none,
-  ),
-  enabledBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(12),
-    borderSide: BorderSide.none,
-  ),
-  focusedBorder: OutlineInputBorder(
-    borderRadius: BorderRadius.circular(12),
-    borderSide: BorderSide.none,
-  ),
-
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide.none,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide.none,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide.none,
+          ),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) return "هذا الحقل مطلوب";
@@ -262,7 +261,7 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
           return null;
         },
       ),
-      const SizedBox(height: 10),
+      SizedBox(height: 10),
     ],
   );
 }
@@ -272,8 +271,8 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(label, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
-        const SizedBox(height: 8),
+        Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
+        SizedBox(height: 8),
         Directionality(
           textDirection: TextDirection.rtl,
           child: DropdownButtonFormField<String>(
@@ -297,16 +296,16 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
               contentPadding: EdgeInsets.symmetric(horizontal: 16),
             ),
 
-            hint: const Text("اختر المدينة", textAlign: TextAlign.right),
+            hint: Text("اختر المدينة", textAlign: TextAlign.right),
             isExpanded: true,
-            icon: const Icon(Icons.arrow_drop_down, textDirection: TextDirection.ltr),
+            icon: Icon(Icons.arrow_drop_down, textDirection: TextDirection.ltr),
             items: items.map((city) {
               return DropdownMenuItem(
                 value: city,
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: EdgeInsets.symmetric(horizontal: 16),
                     child: Text(city),
                   ),
                 ),
@@ -320,7 +319,7 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
             validator: (value) => value == null ? "يرجى اختيار المدينة" : null,
           ),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10),
       ],
     );
   }
@@ -341,13 +340,12 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
           return;
         }
 
-        // Hash the password using BCrypt
         String hashedPassword = BCrypt.hashpw(passwordController.text.trim(), BCrypt.gensalt());
 
         await FirebaseDBHelper.createUser(
           email,
           emailController.text.trim(),
-          hashedPassword, // Store the hashed password
+          hashedPassword,
           nameController.text.trim(),
           phoneNumberController.text.trim(),
           selectedCity!,

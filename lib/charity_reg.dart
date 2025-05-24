@@ -83,12 +83,12 @@ class _charity_reg extends State<charity_reg> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF1FAF2), // Light green background
+      backgroundColor: Color(0xFFF1FAF2), 
       body: Stack(
         children: [
           SingleChildScrollView(
-             physics: const BouncingScrollPhysics(),
-            padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
+             physics: BouncingScrollPhysics(),
+            padding: EdgeInsets.only(top: 70, left: 20, right: 20),
             child: Form(
               key: _formKey,
               child: Column(
@@ -97,7 +97,7 @@ class _charity_reg extends State<charity_reg> {
                   SizedBox(height: 30),
                   // Title
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
+                    padding: EdgeInsets.only(bottom: 20),
                     child: Text(
                       "تسجيل جمعية خيرية جديدة",
                       style: TextStyle(
@@ -117,20 +117,20 @@ class _charity_reg extends State<charity_reg> {
                   _buildTextField("رقم شهادة الترخيص", "أدخل رقم شهادة الترخيص", licenseNumberController, Icons.article, false),
                   _buildPasswordField("كلمة المرور", passwordController, true),
                   _buildPasswordField("تأكيد كلمة المرور", confirmPasswordController, false),
-                  const SizedBox(height: 20),
+                 SizedBox(height: 20),
                   Center(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                                    backgroundColor: Color(0xFF4CAF50),
-                                    foregroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                                    textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                                  ),
+                        backgroundColor: Color(0xFF4CAF50),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                        textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
                       onPressed: _register,
-                      child: const Text("تسجيل"),
+                      child: Text("تسجيل"),
                     ),
                   ),
                   SizedBox(height: 20)
@@ -138,7 +138,6 @@ class _charity_reg extends State<charity_reg> {
               ),
             ),
           ),
-          // Floating Back Button
           Positioned(
             top: screenHeight * 0.05,
             left: 20,
@@ -155,11 +154,11 @@ class _charity_reg extends State<charity_reg> {
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 6,
-                      offset: const Offset(0, 2),
+                      offset: Offset(0, 2),
                     ),
                   ],
                 ),
-                child: const Icon(Icons.arrow_back, color: Color(0xFF2E7D32)),
+                child: Icon(Icons.arrow_back, color: Color(0xFF2E7D32)),
               ),
             ),
           ),
@@ -175,11 +174,11 @@ class _charity_reg extends State<charity_reg> {
     IconData icon,
     bool isRequired, {
     bool isEmail = false,
-  }) {
+    }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xFF2E7D32))),
+        Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
         SizedBox(height: 8),
         TextFormField(
           controller: controller,
@@ -221,7 +220,7 @@ class _charity_reg extends State<charity_reg> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: const Color(0xFF2E7D32))),
+        Text(label, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
         SizedBox(height: 8),
         TextFormField(
           controller: controller,
@@ -267,7 +266,7 @@ class _charity_reg extends State<charity_reg> {
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: const Color(0xFF2E7D32),
+          color: Color(0xFF2E7D32),
         ),
       ),
       SizedBox(height: 8),
@@ -293,7 +292,7 @@ class _charity_reg extends State<charity_reg> {
           hint: Text(
             "اختر المدينة",
             textAlign: TextAlign.right,
-            style: TextStyle(color: Colors.grey), // Apply style here
+            style: TextStyle(color: Colors.grey), 
           ),
           isExpanded: true,
           icon: Icon(Icons.arrow_drop_down, textDirection: TextDirection.ltr),
@@ -327,7 +326,7 @@ class _charity_reg extends State<charity_reg> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Text(label, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: const Color(0xFF2E7D32))),
+        Text(label, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF2E7D32))),
         SizedBox(height: 8),
         TextFormField(
           controller: controller,

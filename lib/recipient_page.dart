@@ -5,9 +5,9 @@ import 'package:graduation_project/donor_recipient_profile.dart';
 import 'package:graduation_project/recipient_donation_details.dart';
 
 class recipient_page extends StatefulWidget {
-  final String email;  // Add this line to accept email as a parameter
+  final String email;  
 
-  const recipient_page({Key? key, required this.email}) : super(key: key);  // Update constructor
+  const recipient_page({Key? key, required this.email}) : super(key: key);  
 
   @override
   _recipient_page createState() => _recipient_page();
@@ -19,7 +19,7 @@ class _recipient_page extends State<recipient_page> {
   @override
   void initState() {
     super.initState();
-    _fetchDonationCount(widget.email);  // Use widget.email to access the passed email
+    _fetchDonationCount(widget.email);  
   }
 
   // Count donations for this recipient
@@ -80,7 +80,7 @@ class _recipient_page extends State<recipient_page> {
   Navigator.pushAndRemoveUntil(
     context,
     MaterialPageRoute(builder: (context) => login_or_signup_screen()),
-    (Route<dynamic> route) => false, // Remove all previous routes
+    (Route<dynamic> route) => false, 
   );
 }
 
@@ -92,8 +92,8 @@ Widget build(BuildContext context) {
 
   return WillPopScope(
     onWillPop: () async {
-      _confirmLogout();  // Show the logout confirmation popup
-      return false;      // Prevent default back action (app exit)
+      _confirmLogout();  
+      return false;
     },
     child: Scaffold(
       backgroundColor: Color(0xFFF1FAF2),
@@ -111,7 +111,6 @@ Widget build(BuildContext context) {
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF2E7D32),
-                    //color:Colors.black,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -127,8 +126,6 @@ Widget build(BuildContext context) {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    //color:Colors.black,
-                    //color: Color(0xFF4CAF50),
                     color: Color(0xFF2E7D32),
                   ),
                   textAlign: TextAlign.center,
@@ -157,7 +154,6 @@ Widget build(BuildContext context) {
             ),
           ),
 
-          // Floating Logout Button (Top Left)
           Positioned(
             top: screenHeight * 0.05,
             left: 20,
@@ -186,8 +182,7 @@ Widget build(BuildContext context) {
               ),
             ),
           ),
-        
-          // Floating Profile Button (Top Right)
+
           Positioned(
             top: screenHeight * 0.05,
             right: 20,

@@ -61,13 +61,11 @@ class _admin_page extends State<admin_page> {
 
   Future<void> updateValidStatus(String email, bool status) async {
     if (status) {
-      // Approving
       await _firestore.collection('charity').doc(email).update({
         'validstatus': true,
         'rejected': false,
       });
     } else {
-      // Rejecting
       await _firestore.collection('charity').doc(email).update({
         'validstatus': false,
         'rejected': true,
@@ -85,14 +83,14 @@ class _admin_page extends State<admin_page> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Directionality(
-      textDirection: TextDirection.rtl, // Whole page RTL
+      textDirection: TextDirection.rtl, 
       child: Scaffold(
         backgroundColor: Color(0xFFF1FAF2),
         body: SafeArea(
           child: WillPopScope(
             onWillPop: () async {
               _confirmLogout();
-              return false; // Prevent the default back button action
+              return false; 
             },
             child: Stack(
               children: [
@@ -258,7 +256,7 @@ class _admin_page extends State<admin_page> {
       child: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch, // Stretch to full width
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Align(
               alignment: Alignment.centerRight,

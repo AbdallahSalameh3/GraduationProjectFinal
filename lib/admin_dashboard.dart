@@ -31,10 +31,10 @@ class _admin_dashboard extends State<admin_dashboard> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl, // Arabic RTL support
+      textDirection: TextDirection.rtl, 
       child: Scaffold(
         body: Container(
-          color: Color(0xFFF1FAF2), // very light green background
+          color: Color(0xFFF1FAF2),
           child: _pages[_selectedIndex],
         ),
         bottomNavigationBar: BottomNavigationBar(

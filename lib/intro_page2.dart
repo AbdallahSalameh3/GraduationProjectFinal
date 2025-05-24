@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'intro_page3.dart'; // Import the next intro page
-
+import 'intro_page3.dart';
 class intro_page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -8,7 +7,7 @@ class intro_page2 extends StatelessWidget {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF1FAF2), // Light greenish background
+      backgroundColor: Color(0xFFF1FAF2), 
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -24,33 +23,30 @@ class intro_page2 extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-
-            // Title
             const Text(
               "بقايا طعامك تهمنا",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF2E7D32), // Dark Green text
+                color: Color(0xFF2E7D32), 
                 fontFamily: 'Tajawal',
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
 
-            // Subtitle
             const Text(
               "نساعدك في الاستفادة من بقايا طعامك لمساعدة الغير",
               style: TextStyle(
                 fontSize: 16,
-                color: Color(0xFF4CAF50), // Softer green
+                color: Color(0xFF4CAF50), 
                 fontFamily: 'Tajawal',
               ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
 
-            // DOT INDICATORS (first one highlighted)
+            
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -58,7 +54,7 @@ class intro_page2 extends StatelessWidget {
                   width: 10,
                   height: 10,
                   decoration: const BoxDecoration(
-                    color: Color(0xFF4CAF50), // Primary dark green
+                    color: Color(0xFF4CAF50), 
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -67,7 +63,7 @@ class intro_page2 extends StatelessWidget {
                   width: 10,
                   height: 10,
                   decoration: BoxDecoration(
-                    color: Colors.green[100], // light greenish
+                    color: Colors.green[100], 
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -94,12 +90,11 @@ class intro_page2 extends StatelessWidget {
 
             const SizedBox(height: 30),
 
-            // NEXT BUTTON
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4CAF50), // Main green
+                  backgroundColor: Color(0xFF4CAF50), 
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
