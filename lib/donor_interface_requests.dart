@@ -86,7 +86,7 @@ class _donor_interface_requests extends State<donor_interface_requests> {
           children: [
             SafeArea(
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 80.0), 
+                padding: const EdgeInsets.only(bottom: 80.0),
                 child: SingleChildScrollView(
                   physics: BouncingScrollPhysics(),
                   child: Column(
@@ -159,32 +159,6 @@ class _donor_interface_requests extends State<donor_interface_requests> {
                 ),
               ),
             ),
-
-            Positioned(
-              bottom: 20,
-              left: 20,
-              right: 20,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => donation_request_form(donoremail: widget.donoremail),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF4CAF50),
-                  foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text('تبرع الآن', style: TextStyle(fontSize: 16)),
-              ),
-            ),
-
             Positioned(
               top: MediaQuery.of(context).size.height * 0.05,
               left: 20,
@@ -207,13 +181,12 @@ class _donor_interface_requests extends State<donor_interface_requests> {
                   ),
                   child: Transform(
                     alignment: Alignment.center,
-                    transform: Matrix4.rotationY(3.1416), 
+                    transform: Matrix4.rotationY(3.1416),
                     child: Icon(Icons.logout, color: Colors.red),
                   ),
                 ),
               ),
             ),
-
             Positioned(
               top: MediaQuery.of(context).size.height * 0.05,
               right: 20,
@@ -246,6 +219,28 @@ class _donor_interface_requests extends State<donor_interface_requests> {
               ),
             ),
           ],
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => donation_request_form(donoremail: widget.donoremail),
+                ),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xFF4CAF50),
+              foregroundColor: Colors.white,
+              padding: EdgeInsets.symmetric(vertical: 15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+            child: Text('تبرع الآن', style: TextStyle(fontSize: 16)),
+          ),
         ),
       ),
     );

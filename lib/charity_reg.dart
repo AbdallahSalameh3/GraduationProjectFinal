@@ -246,8 +246,8 @@ class _charity_reg extends State<charity_reg> {
           ),
           validator: (value) {
             if (value == null || value.isEmpty) return "هذا الحقل مطلوب";
-            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-              return "يجب أن يحتوي على أرقام فقط";
+            if (!RegExp(r'^\d{10}$').hasMatch(value)) {
+              return "يجب أن يحتوي على أرقام فقط و يتكون من عشرة ارقام";
             }
             return null;
           },

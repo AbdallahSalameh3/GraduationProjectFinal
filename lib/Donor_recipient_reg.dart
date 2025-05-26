@@ -192,8 +192,8 @@ class _Donor_recipient_reg extends State<Donor_recipient_reg> {
           ),
           validator: (value) {
             if (value == null || value.isEmpty) return "هذا الحقل مطلوب";
-            if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-              return "يجب أن يحتوي على أرقام فقط";
+            if (!RegExp(r'^\d{10}$').hasMatch(value)) {
+              return "يجب أن يحتوي على أرقام فقط و يتكون من عشرة ارقام";
             }
             return null;
           },
